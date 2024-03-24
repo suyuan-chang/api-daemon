@@ -2,7 +2,7 @@
 
 import { Encoder, ObjectDecoder, Decoder } from "./bincode.js";
 
-const DEBUG = false;
+const DEBUG = true;
 
 export const core = (() => {
   class SessionHandshake {

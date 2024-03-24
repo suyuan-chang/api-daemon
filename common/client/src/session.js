@@ -9,7 +9,7 @@ import services from "./services";
 
 var kcore = ExternalAPI.core;
 
-const DEBUG = false;
+const DEBUG = true;
 
 /**
  * Release an object registered in the finalization registry of this session.
