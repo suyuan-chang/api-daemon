@@ -32,7 +32,7 @@ pub struct SignalContext {
 extern "C" fn signal_log_rs(
     level: c_int,
     message: *const c_char,
-    len: size_t,
+    len: usize,
     _user_data: *mut c_void,
 ) {
     let msg = unsafe { String::from_raw_parts(message as *mut u8, len as _, len as _) };

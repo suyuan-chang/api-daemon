@@ -167,7 +167,7 @@ extern "C" fn session_store_load_session(
 extern "C" fn session_store_get_sub_device_sessions(
     sessions: *mut *mut signal_int_list,
     name: *const c_char,
-    name_len: size_t,
+    name_len: usize,
     user_data: *mut c_void,
 ) -> c_int {
     let mut ctxt: Rc<StoreProxies> = unsafe { Rc::from_raw(user_data as *const StoreProxies) };
@@ -209,9 +209,9 @@ extern "C" fn session_store_get_sub_device_sessions(
 extern "C" fn session_store_store_session(
     address: *const signal_protocol_address,
     record: *mut u8,
-    record_len: size_t,
+    record_len: usize,
     _user_record: *mut u8,
-    _user_record_len: size_t,
+    _user_record_len: usize,
     user_data: *mut c_void,
 ) -> c_int {
     let mut ctxt: Rc<StoreProxies> = unsafe { Rc::from_raw(user_data as *const StoreProxies) };
@@ -285,7 +285,7 @@ extern "C" fn session_store_delete_session(
 /// @return the number of deleted sessions on success, negative on failure
 extern "C" fn session_store_delete_all_sessions(
     name: *const c_char,
-    name_len: size_t,
+    name_len: usize,
     user_data: *mut c_void,
 ) -> c_int {
     let mut ctxt: Rc<StoreProxies> = unsafe { Rc::from_raw(user_data as *const StoreProxies) };
@@ -378,7 +378,7 @@ extern "C" fn id_key_store_get_local_registration_id(
 extern "C" fn id_key_store_save_identity(
     address: *const signal_protocol_address,
     key_data: *mut u8,
-    key_len: size_t,
+    key_len: usize,
     user_data: *mut c_void,
 ) -> c_int {
     debug!("id_key_store_save_identity");
@@ -408,7 +408,7 @@ extern "C" fn id_key_store_save_identity(
 extern "C" fn id_key_store_is_trusted_identity(
     address: *const signal_protocol_address,
     key_data: *mut u8,
-    key_len: size_t,
+    key_len: usize,
     user_data: *mut c_void,
 ) -> c_int {
     debug!("id_key_store_is_trusted_identity {}", unsafe {
@@ -453,9 +453,9 @@ extern "C" fn id_key_store_destroy(_user_data: *mut c_void) {
 extern "C" fn store_sender_key(
     sender_key_name: *const signal_protocol_sender_key_name,
     record: *mut u8,
-    record_len: size_t,
+    record_len: usize,
     _user_record: *mut u8,
-    _user_record_len: size_t,
+    _user_record_len: usize,
     user_data: *mut c_void,
 ) -> c_int {
     debug!("store_sender_key");

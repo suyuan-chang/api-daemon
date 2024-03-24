@@ -24,7 +24,7 @@ const SG_CIPHER_AES_CBC_PKCS5: c_int = 2;
 /// @param data pointer to the output buffer
 /// @param len size of the output buffer
 /// @return 0 on success, negative on failure
-extern "C" fn random_func(data: *mut u8, len: size_t, _user_data: *mut c_void) -> c_int {
+extern "C" fn random_func(data: *mut u8, len: usize, _user_data: *mut c_void) -> c_int {
     // debug!("random_func len={}", len);
     let rng = SystemRandom::new();
 
@@ -48,7 +48,7 @@ type HmacSha256 = Hmac<Sha256>;
 extern "C" fn hmac_sha256_init_func(
     hmac_context: *mut *mut c_void,
     key: *const u8,
-    key_len: size_t,
+    key_len: usize,
     _user_data: *mut c_void,
 ) -> c_int {
     debug!("hmac_sha256_init_func");
@@ -79,7 +79,7 @@ extern "C" fn hmac_sha256_init_func(
 extern "C" fn hmac_sha256_update_func(
     hmac_context: *mut c_void,
     data: *const u8,
-    data_len: size_t,
+    data_len: usize,
     _user_data: *mut c_void,
 ) -> c_int {
     debug!("hmac_sha256_update_func");
@@ -162,7 +162,7 @@ extern "C" fn sha512_digest_init_func(
 extern "C" fn sha512_digest_update_func(
     digest_context: *mut c_void,
     data: *const u8,
-    data_len: size_t,
+    data_len: usize,
     _user_data: *mut c_void,
 ) -> c_int {
     debug!("sha512_digest_update_func");
@@ -224,11 +224,11 @@ extern "C" fn encrypt_func(
     output: *mut *mut signal_buffer,
     cipher: c_int,
     key: *const u8,
-    key_len: size_t,
+    key_len: usize,
     iv: *const u8,
-    iv_len: size_t,
+    iv_len: usize,
     plaintext: *const u8,
-    plaintext_len: size_t,
+    plaintext_len: usize,
     _user_data: *mut c_void,
 ) -> c_int {
     debug!(
@@ -288,11 +288,11 @@ extern "C" fn decrypt_func(
     output: *mut *mut signal_buffer,
     cipher: c_int,
     key: *const u8,
-    key_len: size_t,
+    key_len: usize,
     iv: *const u8,
-    iv_len: size_t,
+    iv_len: usize,
     ciphertext: *const u8,
-    ciphertext_len: size_t,
+    ciphertext_len: usize,
     _user_data: *mut c_void,
 ) -> c_int {
     debug!("decrypt_func key_len is {}", key_len);
