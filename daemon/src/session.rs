@@ -357,7 +357,12 @@ impl Session {
                 }
 
                 if self.origin_attributes.is_none() {
-                    self.abort_connection(&format!("Invalid token: {}", handshake.token));
+                    // self.abort_connection(&format!("Invalid token: {}", handshake.token));
+                    info!("token `{}` is not registered. use dummy settings.", handshake.token);
+
+                    let url = "https://dummy.com";
+                    let permissions_set = HashSet::new();
+                    self.origin_attributes = Some(OriginAttributes::new(&url, permissions_set));
                 }
 
                 // Everything is fine, send a success SessionAck.
