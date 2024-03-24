@@ -369,7 +369,6 @@ version = "0.1.0"
 dependencies = [
  "libc",
  "log",
- "procfs",
  "thiserror",
 ]
 
@@ -989,7 +988,6 @@ name = "common"
 version = "0.2.0"
 dependencies = [
  "actix",
- "android_utils",
  "bincode",
  "byteorder",
  "dyn-clone",
@@ -1194,7 +1192,6 @@ dependencies = [
  "actix-web",
  "actix-web-actors",
  "android_logger",
- "android_utils",
  "apps_service",
  "async-std",
  "audiovolume_service",
@@ -1324,7 +1321,6 @@ dependencies = [
  "env_logger",
  "fantoccini",
  "log",
- "procfs",
  "serde",
  "serde_json",
  "tokio",
@@ -1751,12 +1747,6 @@ checksum = "62b467343b94ba476dcb2500d242dadbb39557df889310ac77c5d99100aaac33"
 dependencies = [
  "libc",
 ]
-
-[[package]]
-name = "hex"
-version = "0.4.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7f24254aa9a54b5c858eaee2f5bccdb46aaf0e486a595ed5fd8f86ba55232a70"
 
 [[package]]
 name = "hex-slice"
@@ -2675,21 +2665,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c7342d5883fbccae1cc37a2353b09c87c9b0f3afd73f5fb9bba687a1f733b029"
 dependencies = [
  "unicode-xid",
-]
-
-[[package]]
-name = "procfs"
-version = "0.10.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "95e344cafeaeefe487300c361654bcfc85db3ac53619eeccced29f5ea18c4c70"
-dependencies = [
- "bitflags",
- "byteorder",
- "chrono",
- "flate2",
- "hex",
- "lazy_static",
- "libc",
 ]
 
 [[package]]
