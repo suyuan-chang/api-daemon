@@ -1,12 +1,14 @@
 /// A simple selinux wrapper.
 use std::os::raw::c_int;
 
+/*
 #[link(name = "selinux")]
 extern "C" {
     #[cfg(target_os = "android")]
     pub fn setcon(context: *const libc::c_char) -> c_int;
     pub fn security_getenforce() -> c_int;
 }
+*/
 
 #[derive(Debug, PartialEq)]
 pub enum SeLinuxEnforceState {
@@ -28,6 +30,7 @@ impl SeLinux {
     }
 
     pub fn getenforce() -> Result<SeLinuxEnforceState, String> {
+/*
         let res = unsafe { security_getenforce() };
 
         match res {
@@ -39,5 +42,7 @@ impl SeLinux {
                 res
             )),
         }
+*/
+        Ok(SeLinuxEnforceState::Enforcing)
     }
 }

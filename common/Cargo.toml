@@ -7,7 +7,7 @@ version = "0.2.0"
 
 [dependencies]
 actix = "0.12"
-android_utils = {path = "../support/android-utils"}
+###android_utils = {path = "../support/android-utils"}
 bincode = "1.3"
 byteorder = "1.3"
 dyn-clone = "1.0"

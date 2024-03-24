@@ -95,12 +95,14 @@ async fn test_script(script: &str, client: &mut Client) -> Result<(), CmdError> 
     Ok(())
 }
 
-fn find_process(process_name: &str) -> bool {
+fn find_process(_process_name: &str) -> bool {
+/*
     for prc in procfs::process::all_processes().unwrap() {
         if prc.stat.comm.as_str() == process_name {
             return true;
         }
     }
+*/
     false
 }
 

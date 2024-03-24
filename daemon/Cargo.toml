@@ -99,7 +99,7 @@ env_logger = "0.8"
 
 [target.'cfg(target_os = "android")'.dependencies]
 android_logger = "0.5"
-android_utils = {path = "../support/android-utils"}
+###android_utils = {path = "../support/android-utils"}
 
 [dev-dependencies]
 actix-web-actors = "4.0"

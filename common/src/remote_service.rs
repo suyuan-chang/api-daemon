@@ -486,12 +486,14 @@ impl RemoteServiceManager {
                         spawn_child(service_name, &pair, &self.root_path, &self.registrar)
                     {
                         info!("Using a remote daemon for {}", service_name);
+/*
                         if let Err(err) = android_utils::AndroidProperties::set(
                             "kaios.media-daemon.pid",
                             &child.id().to_string(),
                         ) {
                             error!("Failed to set kaios.media-daemon.pid, error: {:?}", err);
                         }
+*/
                         let writer = LockedIpcWriter::new(pair.0.clone());
                         lock.insert(service_name.into(), writer.clone());
                         self.start(child, &pair, service_name);

@@ -1,17 +1,23 @@
 //! Various system level utilities.
 
 use crate::{AndroidProperties, PropertyGetter};
-use libc::{pid_t, sysconf};
+/// use libc::{pid_t, sysconf};
 use log::{debug, error};
-use procfs::process::Process;
+/// use procfs::process::Process;
 use std::fs;
 #[cfg(target_os = "android")]
 use std::io::Read;
 use std::io::Write;
-use std::path::PathBuf;
+/// use std::path::PathBuf;
 
 const CONTROL_PATH: &str = "/sys/class/leds/sublcd-backlight/brightness";
 
+// Mock adjust_process_oom_score()
+pub fn adjust_process_oom_score(_process_prefix: &str, _score: i32) -> bool {
+    false
+}
+
+/*
 // Iterate through processes information and return the full list and
 // the Nuwa process p_id.
 fn find_process_pid(process_prefix: &str) -> Option<pid_t> {
@@ -51,7 +57,14 @@ pub fn adjust_process_oom_score(process_prefix: &str, score: i32) -> bool {
 
     false
 }
+*/
 
+// Mock kill_process()
+pub fn kill_process(_process_prefix: &str) -> bool {
+    false
+}
+
+/*
 // Kills the first process found that starts with this prefix.
 // Returns true if successful.
 pub fn kill_process(process_prefix: &str) -> bool {
@@ -62,11 +75,19 @@ pub fn kill_process(process_prefix: &str) -> bool {
 
     false
 }
+*/
 
+// Mock total_memory()
+pub fn total_memory() -> libc::c_long {
+    256
+}
+
+/*
 // Returns the amount of memory in MB
 pub fn total_memory() -> libc::c_long {
     unsafe { sysconf(libc::_SC_PHYS_PAGES) * sysconf(libc::_SC_PAGE_SIZE) / (1024 * 1024) }
 }
+*/
 
 // Opaque struct used to save and restore changes to the system state.
 
