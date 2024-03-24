@@ -12,7 +12,7 @@ cmd() {
 
 set -e
 
-if [ "${TARGET}" = "x86_64-unknown-linux-gnu" ];
+if [ "${TARGET}" = "x86_64-unknown-linux-gnu" ] || [ "${TARGET}" = "x86_64-apple-darwin" ];
 then
        CC=cc
        XCFLAGS=
