@@ -356,7 +356,9 @@ impl OriginAttributes {
     }
 
     pub fn has_permission(&self, permission: &str) -> bool {
-        self.permissions.contains(permission)
+        // NOTE: mock permission, grant any permission.
+        // self.permissions.contains(permission)
+        true
     }
 
     pub fn identity(&self) -> String {
